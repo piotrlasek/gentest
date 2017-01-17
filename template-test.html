@@ -1,0 +1,93 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+    </script>
+     <meta charset="UTF-8"> 
+
+</head>
+<body>
+
+    <!--div id=dheader>
+        <div class=drow>
+            <div id="dtitle">{TITLE}</div><div id="ddate">{DATE}</div>
+        </div>
+        <div class=drow>
+            <div id=dname>Imię i nazwisko:</div>
+            <div id=dname_box>
+                <table id="name_box">
+                    <tr id="name_fields">
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class=drow>
+            <div id=dresults>
+                <div id=dresults_text>Tabela odpowiedzi: [{CODE}]</div>
+                <div id=dresults_box>
+                    {ANSWER_TABLE}
+                </div>
+            </div>
+            <div id=dpoints>
+                <div id=dpoints_text>Liczba punktów:</div>
+                <table><tr><td>
+                <div id=dpoints_box>
+                </td></tr></table>
+                </div>
+            </div>
+        </div>
+    </div-->
+
+    <table id="header">
+        <tr>
+            <td>
+                <div id="title">
+                    {TITLE}
+                </div>
+                <div id="date">
+                    {DATE}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="name">
+                    Imię i nazwisko:
+                    <table id="name_box">
+                        <tr id="name_fields">
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td id="answers_name">
+                <div id="answers">
+                    Tabela odpowiedzi: <code>[{CODE}]</code>
+                    {ANSWER_TABLE}
+                </div>
+                <div id="points">
+                    Liczba punktów:<code> </code>
+                    <table id="points_box">
+                        <tr id="points_field">
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <div id="column_gap">
+        {QUESTIONS}
+    </div>
+
+
+</body>
+</html>
