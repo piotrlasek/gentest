@@ -68,6 +68,9 @@ html, #header, #points_box, #name_box
 #points_box tr td {
     width: 150px;
     height: 51px;
+    text-align: right;
+    padding: 5pt;
+    vertical-align: bottom;
 }
 
 table.answer_table {
@@ -123,6 +126,11 @@ code {
 }
 
 .question_text {
+    display: -webkit-box;
+    float: left;
+}
+
+.my_code{
     display: -webkit-box;
     float: left;
 }

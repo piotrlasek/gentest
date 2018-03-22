@@ -1,7 +1,7 @@
 import random
 import string
-import struct
-
+from xml.dom import minidom
+import re
 
 def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
     return ''.join(random.choice(chars) for _ in range(size))
@@ -118,11 +118,18 @@ class Item:
 # --------------------------------------------------------------------------
 items = []
 
-questions_file_name = 'questions-pwir.txt'
+# questions_file_name = 'questions-pwir-kol2.txt'
+# questions_file_name = 'questions-pwir.txt'
 # questions_file_name = 'questions-iswddum.txt'
-# questions_file_name = 'questions-tgui.txt'
+#questions_file_name = 'questions-ai2-test-1.txt'
+#questions_file_name = 'questions-ai2-exam-niestacj.txt'
+#questions_file_name = 'questions-ai2-exam-stacj-2017.txt'
+#questions_file_name = 'questions-ai2-kol2-stacj-2017.txt'
+questions_file_name = 'questions-paum-2017-12.txt'
+#questions_file_name = 'questions-iswddum-2017-12.txt'
 
 f = open(questions_file_name, encoding='utf-8')
+# f = open(questions_file_name, 'r', 'utf-8')
 lines = f.readlines()
 count = len(lines)
 i = 0
@@ -133,17 +140,35 @@ i += 1
 while i < count:
     line = lines[i]                             # id
     if line.startswith('#'):
-        item_id = line.strip().replace('# ', '')
+        item_id = line.strip().split(' ')[1]
         item = Item(item_id)
-        i += 1
-        line = lines[i].strip()                 # question
-        item.set_question(line)
 
-        i += 1                               # answers
+        i += 1
+        line = lines[i]
+
+        question = ""
+        while not line.startswith("---"):
+            question += line
+            i += 1
+            line = lines[i]
+
+        question = question.strip('\r\n')                 # question
+        question = question.replace('\n', ' ')
+        question = question.replace("<cs>", "<br><code>")
+        question = question.replace("</cs>", "</code><br>")
+        question = question.replace("<c>", "<code>")
+        question = question.replace("</c>", "</code>")
+        question = question.replace("`", "&nbsp;")
+        item.set_question(question)
+
+        i += 1
+
         while i < count:
             if lines[i].strip().startswith("#"):
                 break
             answer_text = lines[i].strip()
+            answer_text = answer_text.replace("<c>", "<code>")
+            answer_text = answer_text.replace("</c>", "</code>")
             answer = Answer()
             answer.set_text(answer_text)
             item.add_answer(answer)
@@ -156,8 +181,8 @@ while i < count:
 
 #
 items_ids = [i for i in range(len(items))]
-# random.shuffle(items_ids, random.random)
-items_ids = random.sample(items_ids, 52)
+random.shuffle(items_ids, random.random)
+items_ids = random.sample(items_ids, 22)
 
 test_file_name = questions_file_name.replace('questions-', '')
 test_file_name = test_file_name.replace('.txt', '')
@@ -182,7 +207,9 @@ template_html_key = str(template_file_key.read())
 answer_ids = ''
 answer_key = ''
 content = ''
-chunk_size = 26;
+chunk_size = (int)(len(items_ids) / 2)
+# :w
+chunk_size = 22
 items_ids_chunks = chunks(items_ids, chunk_size)
 
 i = 0
@@ -222,6 +249,7 @@ for items_ids_chunk in items_ids_chunks:
 
 no = 1
 for item_index in items_ids:
+    print("-----------------> " + str(no))
     item = items[item_index]
     content += item.to_html(str(no))
     no += 1
@@ -231,6 +259,7 @@ template_html_test = template_html_test.replace('{QUESTIONS}', content)
 template_html_test = template_html_test.replace('{CODE}', test_code)
 template_html_test = template_html_test.replace('{TITLE}', title)
 template_html_test = template_html_test.replace('{DATE}', date)
+template_html_test = template_html_test.replace('{MAX_POINTS}', str(len(items_ids)))
 
 template_html_key = template_html_key.replace('{ANSWER_KEY}', answer_key)
 template_html_key = template_html_key.replace('{CODE}', test_code)
