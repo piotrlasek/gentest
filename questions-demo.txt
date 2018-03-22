@@ -1,0 +1,124 @@
+﻿<b>APLIKACJE INTERNETOWE</b>, KOLOKWIUM I
+12 kwietnia 2017 r.
+# 1
+Podaj wynik wykonania następującego fragmentu programu:
+<cs>
+  print(3 + 5 % 2)
+</cs>
+---
+  <c> 1   </c>
++ <c> 4   </c>
+  <c> 3.5 </c>
+  <c> 5.5 </c>
+# 2
+Podaj wynik wykonania następującego fragmentu programu:
+<cs>
+  values = [3, 7, 2]<br>
+  values[-1] = 'random'<br>
+  print(values)
+</cs>
+---
++ <c> [3, 7, 'random'] </c>
+  <c> ['random', 7, 3] </c>
+  <c> [3, 7, 2, 'random'] </c>
+  Próba dostępu do nieistniejącego elementu tablicy <c>values</c>.
+# 3
+Podaj wynik wykonania następującego fragmentu programu:
+<cs>
+  num = len([10, 8, 2])
+  print(num)
+</cs>
+---
++ <c>3</c>
+  <c>10</c>
+  <c>2</c>
+  Nie ma funkcji <c>len</c>.
+# 4
+Podaj wynik wykonania następującego fragmentu programu:
+<cs>
+  1: word = 'good luck'<br>
+  2: word[0] = 'G'<br>
+  3: print(word)
+</cs>
+---
++ Tego typu operacja przypisania (linia 2) nie jest wspierana przez typ <c>string</c>
+  <c>'Good luck'</c>
+  <c>'good luck'</c>
+  <c>'Ggood luck'</c>
+# 5
+Podaj wynik wykonania następującego fragmentu programu:
+<cs>
+  print(False or ('october' < 'november'))
+</cs>
+---
++ <c>False </c>
+  <c>True </c>
+  <c>'True' </c>
+  <c>'october' </c>
+# 6
+Podaj wynik wykonania następującego fragmentu programu:
+<cs>
+  snowing = False<br>
+  num = 0<br>
+  print(snowing and 5 / num == 0)
+</cs>
+---
++ <c> False </c> ponieważ wyrażenie <c>5/num</c> nie zostanie wykonane.
+  <c> False </c> ponieważ wystąpi wyjątek podczas dzielenia przez zero.
+  <c> True </c> ponieważ wartość wyrażenia <c>5/num == 0</c> wynosi zero.
+  Wynik nie jest możliwy do ustalenia z powodu dzielenia przez zero.
+# 7
+Podaj wynik wykonania następującego fragmentu programu:
+<cs>
+  word = "code"
+  print(word[4])
+</cs>
+---
++ Błąd: Wyjście poza zakres tablicy <c>word</c>.
+  Błąd: Nie ma możliwości drukowania pojedyczych liter.
+  Błąd: Do wydruku zmiennej typu <c>char</c> należy użyć innej funkcji.
+  Błąd: Słowo <c>code</c> jest zastrzeżonym słowem kluczowym.
+# 8
+Podaj wynik wykonania następującego fragmentu programu:
+<cs>
+  a = [13, 4, 7]<br>
+  b = a.append(5)<br>
+  print(a)
+</cs>
+---
++ <c>[13, 4, 7, 5]</c>
+  <c>[5, 13, 4, 7]</c>
+  <c>[5, 7, 4, 13]</c>
+  Nie ma możliwości wykonania funkcji <c>append()</c> na zmiennej listowej.
+# 9
+Uzupełnij poniższą funkcję w taki sposób, aby zwracała
+co trzeci znak zmiennej znakowej przekazanej jako parametr.
+<cs>
+  def foo(message):<br>
+  __return ?
+</cs>
+---
++ <c>message[::3]</c>
+  <c>message[3::]</c>
+  <c>message[:3:]</c>
+  <c>message[3:3:3]</c>
+# 10
+Dla przedstawionych poniżej zagnieżdżonych pętli <c>for</c>
+<cs>
+  for i in range(2):<br>
+  __for j in range(2):<br>
+  ____print('({0}, {1})'.format(i, j))
+</cs>
+Uzupełnij brakującą linię w poniższym wyniku listingu będącym wynikiem
+działania pętli:
+<cs>
+  (0, 0)<br>
+  (0, 1)<br>
+  (1, 0)<br>
+  ___?
+</cs>
+---
++ <c>(1, 1)</c>
+  <c>(0, 0)</c>
+  <c>(1, 0)</c>
+  <c>(0, 1)</c>
